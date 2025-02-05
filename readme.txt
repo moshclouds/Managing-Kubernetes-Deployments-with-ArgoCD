@@ -1,33 +1,50 @@
-//start the minikube
+# Start Minikube
 minikube start
 
-// create name space for argocd
+# Create a namespace for ArgoCD
 kubectl create namespace argocd
 
-//install via plain manifest
+# Create a namespace for ArgoCD application deployments
+kubectl create namespace argocd-apps
+
+# Install ArgoCD using the official manifest
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-//verify installation of argocd
+# Verify the installation of ArgoCD
 kubectl get pods -n argocd -w
 
-//checks the services
+# Check the services
 kubectl get svc -n argocd
 
-//edit the argocd-server to nodeport
+# Edit the ArgoCD server service to use NodePort
 kubectl edit svc argocd-server -n argocd
 
-//expose the argocd server 
+# Expose the ArgoCD server
 minikube service argocd-server -n argocd
 
-//access via the mnikube given address
-example:-  http://127.0.0.1:6516
+# Access the ArgoCD dashboard using the Minikube-provided address
+# Example: http://127.0.0.1:6516
 
-//retrive secrets to find out argocd password
+# Retrieve secrets to find the ArgoCD admin password
 kubectl get secrets -n argocd
 
-//acess secret file
+# Access the secret file
 kubectl edit secret argocd-initial-admin-secret -n argocd
 
-//decode the base64 password using 3rd partry serrvice or an ohter
+# Decode the base64 password using a third-party service or a command-line tool
 
-//
+# Log in to the ArgoCD dashboard
+
+# Create application configurations in ArgoCD and deploy the app
+
+# Verify the services are up and running
+kubectl get svc -n argocd-apps
+
+# Get the port of the service by editing the service configuration
+kubectl edit svc guestbook-ui -n argocd-apps
+
+# Expose the application
+kubectl expose service guestbook-ui --type=NodePort --target-port=80 --name=guestbook-ui-ext -n argocd-apps
+
+# Run the application using Minikube tunneling
+minikube service guestbook-ui-ext -n argocd-apps
