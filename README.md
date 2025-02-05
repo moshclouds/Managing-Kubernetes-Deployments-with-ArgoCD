@@ -1,5 +1,11 @@
 # 🚀 Managing-Kubernetes-Deployments-with-ArgoCD
+
+<p align="center">
+<img width="720" alt="Image" src="https://github.com/user-attachments/assets/1ddb72bb-a55b-46c8-a63b-7bb3ed6b0dbe" />
+</p>
+
 ## 🔥 Introduction
+
 
 ArgoCD 🚀 is a powerful, declarative GitOps 🔄 continuous delivery tool designed for Kubernetes ☸️, enabling seamless automatic deployment ⚡ and lifecycle management of applications. It ensures that the desired application state, defined in a Git repository 📂, is automatically synchronized with the actual state in a Kubernetes cluster 🏗️. This makes deployments more reliable, automated, and version-controlled ✅. With ArgoCD, teams can achieve real-time monitoring 📊, rollback capabilities 🔄, and multi-cluster management 🌍, enhancing both security 🔐 and efficiency in DevOps workflows.
 
